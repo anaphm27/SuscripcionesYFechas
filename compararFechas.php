@@ -37,7 +37,6 @@
 
     if ($fechaSus > $fechaActual) {
         echo "La suscripción aún no ha caducado.<br>";
-        
         $intervalo = $fechaActual->diff($fechaSus);
         echo "Quedan " . $intervalo->days . " días para que caduque la suscripción.<br>";
     } else {
@@ -45,18 +44,16 @@
     }
 
     
+    //fecha del evento
     $fechaEvento = new DateTime("2025-01-21");
 
     
-    $fechaEventoComparar = clone $fechaEvento;
-    $fechaEventoComparar->setTime(0, 0, 0);
+    $fechaEvento->setTime(0, 0, 0);
+    $fechaActual->setTime(0, 0, 0);
 
-    $fechaActualComparar = clone $fechaActual;
-    $fechaActualComparar->setTime(0, 0, 0);
-
-    if ($fechaEventoComparar < $fechaActualComparar) {
+    if ($fechaEvento < $fechaActual) {
         echo "El evento ya pasó.<br>";
-    } elseif ($fechaEventoComparar > $fechaActualComparar) {
+    } elseif ($fechaEvento > $fechaActual) {
         echo "El evento está en el futuro.<br>";
     } else {
         echo "El evento es hoy.<br>";
